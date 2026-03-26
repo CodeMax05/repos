@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh; 
+}
+
+th {
+  width: 120px;
+  padding-top:25px;
+  padding-bottom:30px;
+}
+
+td {
+  padding: 5px;
+}
+
+.time {
+  height: 40px;
+}
+
+.Event {
+    width: 250px;
+}
+
+.Event h5, h6{
+    margin: 5px;
+}
+
+.green {
+    background-color: rgb(163, 233, 163);
+}
+
+.orange{
+    background-color: orange;
+}
+
+.blue {
+    background-color: skyblue;
+}
