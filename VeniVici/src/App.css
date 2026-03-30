@@ -383,3 +383,10 @@ button:disabled {
     flex-wrap: wrap;
   }
 }
+
+.video{
+  align-self: center;
+  justify-self: center;
+  height: 400px;
+  padding: 20px;
+}

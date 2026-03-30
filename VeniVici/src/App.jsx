@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import gif from '../src/assets/VeniVici.gif'
 
 const ACCESS_KEY = import.meta.env.VITE_DOG_ACCESS_KEY;
 const BASE_URL = 'https://api.thedogapi.com/v1';
@@ -98,7 +99,7 @@ function App() {
   };
 
   // Helper to render clickable attribute
-  const ClickableAttribute = ({ label, value }) => {
+  const ClickableAttribute = ({value}) => {
     if (!value) return null;
     return (
       <span
@@ -183,6 +184,8 @@ function App() {
             </div>
           </div>
         </div>
+
+              <img className='video' src={gif} title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
         <div className="ban-list-panel">
           <h3>Ban List</h3>
