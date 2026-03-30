@@ -25,7 +25,14 @@ function App() {
 
       setDogImage(imageData.url);
 
-      const breed = imageData.breeds?.[0];
+      // Step 2: Fetch full image details to get the breeds array
+      const detailsRes = await fetch(
+        `${BASE_URL}/images/${imageData.id}`,
+        { headers: HEADERS }
+      );
+      const details = await detailsRes.json();
+
+      const breed = details.breeds?.[0];
       if (breed) {
         setBreedInfo(breed);
 
@@ -35,6 +42,8 @@ function App() {
           { headers: HEADERS }
         );
         const facts = await factRes.json();
+        console.log(facts)
+
         if (Array.isArray(facts) && facts.length > 0) {
           setDogFact(facts[0].fact);
         } else {
