@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from 'react'
+import gif from './assets/AssignmentGif.gif'
 import './App.css'
 
 const API_KEY = import.meta.env.VITE_APP_API_KEY
@@ -300,6 +301,8 @@ function App() {
           ))
         )}
       </section>
+
+      <img src={gif} title='Video Walkthrough' width='' alt='Video Walkthrough' />
     </div>
   )
 }
