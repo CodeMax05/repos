@@ -166,3 +166,8 @@
     border-right-color: var(--border);
   }
 }
+
+#classImg{
+  height: 200px;
+  padding: 10px;
+}
