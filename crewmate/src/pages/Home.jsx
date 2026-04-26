@@ -50,7 +50,7 @@ function Home() {
         </div>
       </div>
 
-      <img src={gif} title='Video Walkthrough' width='' alt='Video Walkthrough' />
+      {/* <img src={gif} title='Video Walkthrough' width='' alt='Video Walkthrough' /> */}
     </div>
   );
 }
