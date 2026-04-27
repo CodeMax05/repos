@@ -3,6 +3,8 @@ import Home from './pages/Home'
 import ModPage from './pages/ModPage'
 import ModForm from './pages/ModForm'
 import PartMods from './pages/PartMods'
+import Posts from './pages/Posts'
+import PostDetail from './pages/PostDetail'
 import './App.css'
 import Navigation from './components/Navigation'
 
@@ -17,6 +19,8 @@ function App() {
             <Route path="/mod" element={<ModPage />} />
             <Route path="/mod/add" element={<ModForm />} />
             <Route path="/mod/part/:part" element={<PartMods />} />
+            <Route path="/posts" element={<Posts />} />
+            <Route path="/posts/:id" element={<PostDetail />} />
           </Routes>
         </main>
     </Router>
