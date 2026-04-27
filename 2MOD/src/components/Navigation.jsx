@@ -10,6 +10,7 @@ function Navigation() {
                 <div className="pages">
                     <Link to="/">Home</Link>
                     <Link to="/mod">Mods</Link>
+                    <Link to="/posts">Posts</Link>
                 </div>
             </nav>
         </div>
