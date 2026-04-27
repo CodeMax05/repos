@@ -1,6 +1,26 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router";
+import { PART_CATALOG } from "../data/partCatalog";
+import { supabase } from "../client";
 
 function Home() {
+    const [recentMods, setRecentMods] = useState([]);
+
+    useEffect(() => {
+        async function fetchRecentMods() {
+            const { data, error } = await supabase
+                .from("Mods")
+                .select("*")
+                .order("created_at", { ascending: false })
+                .limit(5);
+
+            if (!error && data) {
+                setRecentMods(data);
+            }
+        }
+        fetchRecentMods();
+    }, []);
+
     return (
         <div className="home-page">
             <div className="hero-section">
@@ -21,39 +41,48 @@ function Home() {
             <div className="features-section">
                 <h2>Popular Mod Categories</h2>
                 <div className="categories-grid">
-                    <div className="category-card">
-                        <img className="category-icon" src="" alt="" />
-                        <span className="category-icon">🎸</span>
-                        <h3>Body</h3>
-                        <p>Body shapes, wood types, finishes, and contours</p>
-                    </div>
-                    <div className="category-card">
-                        <span className="category-icon">🔌</span>
-                        <h3>Electronics</h3>
-                        <p>Pickups, pots, switches, and wiring configurations</p>
-                    </div>
-                    <div className="category-card">
-                        <span className="category-icon">🌉</span>
-                        <h3>Bridge</h3>
-                        <p>Fixed bridges, tremolos, and hardware upgrades</p>
-                    </div>
-                    <div className="category-card">
-                        <span className="category-icon">📏</span>
-                        <h3>Neck</h3>
-                        <p>Neck profiles, fretboards, and scale lengths</p>
-                    </div>
-                    <div className="category-card">
-                        <span className="category-icon">🎛️</span>
-                        <h3>Tuners</h3>
-                        <p>Tuning machines, locking tuners, and stability</p>
-                    </div>
-                    <div className="category-card">
-                        <span className="category-icon">⚪</span>
-                        <h3>Nut</h3>
-                        <p>Nut materials, slot widths, and string spacing</p>
-                    </div>
+                    {PART_CATALOG.map((part) => (
+                        <div key={part.name} className="category-card">
+                            <img
+                                className="category-part-image"
+                                src={part.image}
+                                alt={`${part.name} part`}
+                            />
+                            <h3>{part.name}</h3>
+                            <p>{part.description}</p>
+                        </div>
+                    ))}
                 </div>
             </div>
+
+            {recentMods.length > 0 && (
+                <div className="features-section">
+                    <h2>Most Recent MODS</h2>
+                    <div className="recent-mods-list">
+                        {recentMods.map((mod) => (
+                            <div key={mod.id} className="recent-mod-card">
+                                <div className="recent-mod-header">
+                                    <span className="recent-mod-part">{mod.guitarPart}</span>
+                                    <span className="recent-mod-date">
+                                        {new Date(mod.created_at).toLocaleDateString()}
+                                    </span>
+                                </div>
+                                <p className="recent-mod-description">{mod.description}</p>
+                                {mod.partURL && (
+                                    <a
+                                        href={mod.partURL}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="recent-mod-link"
+                                    >
+                                        View Part →
+                                    </a>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
