@@ -1,15 +1,25 @@
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
+  /* Warm Autumn / Woodwork Shop Color Scheme */
+  --text: #5d4e37;
+  --text-h: #3e2723;
+  --bg: #faf6f0;
+  --border: #d4c5b0;
+  --code-bg: #f0e8d8;
+  --accent: #c05621;
+  --accent-bg: rgba(192, 86, 33, 0.12);
+  --accent-border: rgba(192, 86, 33, 0.5);
+  --social-bg: rgba(240, 232, 216, 0.6);
   --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+    rgba(62, 39, 35, 0.15) 0 10px 15px -3px,
+    rgba(62, 39, 35, 0.1) 0 4px 6px -2px;
+
+  /* Wood tones for special elements */
+  --wood-dark: #3e2723;
+  --wood-medium: #8b4513;
+  --wood-light: #cd853f;
+  --wood-accent: #d2691e;
+  --cream: #f5f5dc;
+  --linen: #faf0e6;
 
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
@@ -31,10 +41,10 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  /* :root {
+  :root {
     --text: #9ca3af;
     --text-h: #f3f4f6;
-    --bg: #16171d;
+    --bg: #a76431;
     --border: #2e303a;
     --code-bg: #1f2028;
     --accent: #c084fc;
@@ -43,7 +53,7 @@
     --social-bg: rgba(47, 48, 58, 0.5);
     --shadow:
       rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  } */
+  }
 
   #social .button-icon {
     filter: invert(1) brightness(2);
