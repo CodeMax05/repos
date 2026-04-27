@@ -396,12 +396,67 @@ nav {
   border-radius: 16px;
   border: 2px solid var(--border);
 }
+.guitar-map {
+  position: relative;
+  width: min(100%, 400px);
+}
 
 .guitar-image {
+  display: block;
   max-width: 100%;
   height: auto;
   max-height: 600px;
   object-fit: contain;
+}
+
+.guitar-hotspot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  z-index: 2;
+}
+
+.guitar-hotspot-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--wood-accent);
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 2px rgba(62, 39, 35, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.guitar-hotspot-label {
+  opacity: 0;
+  transform: translateY(2px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--wood-dark);
+  background: rgba(250, 240, 230, 0.92);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 5px 10px;
+  white-space: nowrap;
+}
+
+.guitar-hotspot:hover .guitar-hotspot-dot,
+.guitar-hotspot:focus-visible .guitar-hotspot-dot {
+  transform: scale(1.2);
+  box-shadow: 0 0 0 3px rgba(192, 86, 33, 0.3);
+}
+
+.guitar-hotspot:hover .guitar-hotspot-label,
+.guitar-hotspot:focus-visible .guitar-hotspot-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.guitar-hotspot:focus-visible {
+  outline: none;
 }
 .parts-section {
   margin-top: 28px;
@@ -613,6 +668,21 @@ nav {
   .part-header h1 {
     text-align: left;
     font-size: 36px;
+  }
+
+  .guitar-container {
+    padding: 24px 14px;
+  }
+
+  .guitar-hotspot {
+    gap: 6px;
+  }
+
+  .guitar-hotspot-label {
+    opacity: 1;
+    transform: translateY(0);
+    font-size: 11px;
+    padding: 4px 8px;
   }
 }
 
