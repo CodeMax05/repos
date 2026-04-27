@@ -1,11 +1,11 @@
-import { useState } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router'
 import Home from './pages/Home'
+import ModPage from './pages/ModPage'
+import ModForm from './pages/ModForm'
 import './App.css'
 import Navigation from './components/Navigation'
 
 function App() {
-
   return (
    <div>
     <Router>
@@ -13,6 +13,8 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/mod" element={<ModPage />} />
+            <Route path="/mod/add" element={<ModForm />} />
           </Routes>
         </main>
     </Router>
