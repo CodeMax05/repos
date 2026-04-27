@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router";
+import { Link, useParams, useNavigate } from "react-router";
 import { supabase } from "../client";
 
 const PART_TITLES = {
@@ -70,7 +70,11 @@ function PartMods() {
                     </div>
                 ) : (
                     mods.map((mod, index) => (
-                        <div key={mod.id || `${mod.guitarPart}-${mod.partURL || index}`} className="mod-card">
+                        <Link
+                            key={mod.id || `${mod.guitarPart}-${mod.partURL || index}`}
+                            to={`/posts/${mod.id}`}
+                            className="mod-card"
+                        >
                             <div className="mod-card-header">
                                 <span className="mod-part-badge">{mod.guitarPart}</span>
                                 <span className="mod-date">
@@ -79,16 +83,11 @@ function PartMods() {
                             </div>
                             <p className="mod-description">{mod.description}</p>
                             {mod.partURL && (
-                                <a
-                                    href={mod.partURL}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="mod-link"
-                                >
+                                <span className="mod-link">
                                     View Part →
-                                </a>
+                                </span>
                             )}
-                        </div>
+                        </Link>
                     ))
                 )}
             </div>
