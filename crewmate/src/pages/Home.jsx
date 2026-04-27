@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import gif from '../assets/Crewmate.gif'
+// import gif from '../assets/Crewmate.gif'
 
 function Home() {
   return (
