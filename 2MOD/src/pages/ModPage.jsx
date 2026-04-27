@@ -2,45 +2,21 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import guitarImage from "../assets/Guitar.png";
 import { supabase } from "../client";
+import { PART_CATALOG } from "../data/partCatalog";
 
-const PART_CATEGORIES = [
-    {
-        name: "Body",
-        icon: "🎸",
-        description: "Body shapes, wood types, finishes",
-        hotspot: { left: "55%", top: "90%" },
-    },
-    {
-        name: "Electronics",
-        icon: "🔌",
-        description: "Pickups, pots, switches, wiring",
-        hotspot: { left: "72%", top: "67%" },
-    },
-    {
-        name: "Bridge",
-        icon: "🌉",
-        description: "Fixed bridges, tremolos, hardware",
-        hotspot: { left: "60%", top: "81.5%" },
-    },
-    {
-        name: "Neck",
-        icon: "📏",
-        description: "Neck profiles, fretboards, scale",
-        hotspot: { left: "58%", top: "50%" },
-    },
-    {
-        name: "Tuners",
-        icon: "🎛️",
-        description: "Tuning machines, locking tuners",
-        hotspot: { left: "60%", top: "14%" },
-    },
-    {
-        name: "Nut",
-        icon: "⚪",
-        description: "Nut materials, slot widths",
-        hotspot: { left: "58%", top: "22%" },
-    },
-];
+const HOTSPOT_COORDS = {
+    Body: { left: "55%", top: "90%" },
+    Electronics: { left: "72%", top: "67%" },
+    Bridge: { left: "60%", top: "81.5%" },
+    Neck: { left: "59%", top: "50%" },
+    Tuners: { left: "60%", top: "14%" },
+    Nut: { left: "59%", top: "22%" },
+};
+
+const PART_CATEGORIES = PART_CATALOG.map((part) => ({
+    ...part,
+    hotspot: HOTSPOT_COORDS[part.name],
+}));
 
 function ModPage() {
     const [modCounts, setModCounts] = useState({});
@@ -113,7 +89,11 @@ function ModPage() {
                             to={`/mod/part/${encodeURIComponent(part.name)}`}
                             className="part-card"
                         >
-                            <span className="part-icon">{part.icon}</span>
+                            <img
+                                className="part-icon-image"
+                                src={part.image}
+                                alt={`${part.name} part`}
+                            />
                             <h3>{part.name}</h3>
                             <p className="part-description">{part.description}</p>
                             <span className="mod-count">
