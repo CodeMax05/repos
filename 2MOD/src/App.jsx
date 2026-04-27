@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router'
 import Home from './pages/Home'
 import ModPage from './pages/ModPage'
 import ModForm from './pages/ModForm'
+import PartMods from './pages/PartMods'
 import './App.css'
 import Navigation from './components/Navigation'
 
@@ -15,6 +16,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/mod" element={<ModPage />} />
             <Route path="/mod/add" element={<ModForm />} />
+            <Route path="/mod/part/:part" element={<PartMods />} />
           </Routes>
         </main>
     </Router>

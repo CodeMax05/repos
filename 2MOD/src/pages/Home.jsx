@@ -22,6 +22,7 @@ function Home() {
                 <h2>Popular Mod Categories</h2>
                 <div className="categories-grid">
                     <div className="category-card">
+                        <img className="category-icon" src="" alt="" />
                         <span className="category-icon">🎸</span>
                         <h3>Body</h3>
                         <p>Body shapes, wood types, finishes, and contours</p>

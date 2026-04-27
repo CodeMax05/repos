@@ -16,18 +16,35 @@ function ModPage() {
     const [modCounts, setModCounts] = useState({});
 
     useEffect(() => {
+        let isMounted = true;
         async function fetchModCounts() {
-            const counts = {};
-            for (const part of PART_CATEGORIES) {
-                const { count } = await supabase
-                    .from("Mods")
-                    .select("*", { count: "exact", head: true })
-                    .eq("guitarPart", part.name);
-                counts[part.name] = count || 0;
+            const countEntries = await Promise.all(
+                PART_CATEGORIES.map(async (part) => {
+                    const { count, error } = await supabase
+                        .from("Mods")
+                        .select("*", { count: "exact", head: true })
+                        .eq("guitarPart", part.name);
+
+                    if (error) {
+                        console.error(`Failed to count mods for ${part.name}:`, error);
+                        return [part.name, 0];
+                    }
+
+                    return [part.name, count || 0];
+                })
+            );
+
+            if (!isMounted) {
+                return;
             }
-            setModCounts(counts);
+
+            setModCounts(Object.fromEntries(countEntries));
         }
         fetchModCounts();
+
+        return () => {
+            isMounted = false;
+        };
     }, []);
 
     return (
