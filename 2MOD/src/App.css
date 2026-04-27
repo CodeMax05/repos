@@ -182,3 +182,38 @@
     border-right-color: var(--border);
   }
 }
+
+
+.bitcount-grid-double-font {
+  font-family: "Bitcount Grid Double", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0,
+    "CRSV" 0.5,
+    "ELSH" 0,
+    "ELXP" 0;
+}
+
+nav{
+  display: flex;
+  font-family: "Bitcount Grid Double";
+  font-size: 50px;
+}
+
+.logo{
+  padding: 40px;
+  font-size: 90px;
+  text-decoration: none;
+  color: orange;
+}
+
+.pages *{
+  display: flex;
+  padding: 20px;
+  font-size: 40px;
+  color: orange;
+  text-decoration: none;
+  text-shadow: 3px 1px black;
+}
